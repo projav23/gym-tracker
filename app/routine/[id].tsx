@@ -11,6 +11,7 @@ import {
   ChevronRight,
   Timer,
   Lightbulb,
+  Pencil,
 } from 'lucide-react-native';
 import { Card, Button, Input } from '@/components/ui';
 import { useRoutineStore } from '@/stores/routineStore';
@@ -176,6 +177,12 @@ export default function RoutineDetailScreen() {
               <Text className="text-text-secondary">{routine.description}</Text>
             )}
           </View>
+          <Pressable
+            onPress={() => router.push(`/routine/edit?id=${routine.id}`)}
+            className="p-2"
+          >
+            <Pencil color={colors.text.secondary} size={22} />
+          </Pressable>
         </View>
 
         <ScrollView className="flex-1 px-4">

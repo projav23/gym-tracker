@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { v4 as uuidv4 } from 'uuid';
+import * as Crypto from 'expo-crypto';
 import { Workout, WorkoutExercise, WorkoutSet } from '@/types';
 import { zustandStorage } from '@/services/storage';
 
@@ -165,7 +165,7 @@ export const useWorkoutStore = create<WorkoutState>()(
         const startTime = new Date(activeWorkout.startTime);
         const duration = Math.round((endTime.getTime() - startTime.getTime()) / 60000);
 
-        const id = uuidv4();
+        const id = Crypto.randomUUID();
         const workout: Workout = {
           id,
           routineId: activeWorkout.routineId,

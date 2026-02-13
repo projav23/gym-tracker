@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { v4 as uuidv4 } from 'uuid';
+import * as Crypto from 'expo-crypto';
 import { Routine, RoutineExercise, Exercise } from '@/types';
 import { zustandStorage } from '@/services/storage';
 import { defaultExercises } from '@/constants/exercises';
@@ -16,6 +16,8 @@ interface RoutineState {
   removeExerciseFromRoutine: (routineId: string, exerciseId: string) => void;
   reorderExercises: (routineId: string, exercises: RoutineExercise[]) => void;
   addCustomExercise: (exercise: Omit<Exercise, 'id' | 'isCustom'>) => string;
+  updateExercise: (id: string, updates: Partial<Omit<Exercise, 'id' | 'isCustom'>>) => void;
+  deleteExercise: (id: string) => boolean;
   getExerciseById: (id: string) => Exercise | undefined;
 }
 
@@ -27,7 +29,7 @@ export const useRoutineStore = create<RoutineState>()(
 
       addRoutine: (name, description) => {
         const now = new Date().toISOString();
-        const id = uuidv4();
+        const id = Crypto.randomUUID();
         const routine: Routine = {
           id,
           name,
@@ -59,7 +61,7 @@ export const useRoutineStore = create<RoutineState>()(
       addExerciseToRoutine: (routineId, exercise) => {
         const exerciseWithId: RoutineExercise = {
           ...exercise,
-          id: uuidv4(),
+          id: Crypto.randomUUID(),
         };
         set((state) => ({
           routines: state.routines.map((r) =>
@@ -115,7 +117,7 @@ export const useRoutineStore = create<RoutineState>()(
       },
 
       addCustomExercise: (exercise) => {
-        const id = uuidv4();
+        const id = Crypto.randomUUID();
         const newExercise: Exercise = {
           ...exercise,
           id,
@@ -125,6 +127,29 @@ export const useRoutineStore = create<RoutineState>()(
           exercises: [...state.exercises, newExercise],
         }));
         return id;
+      },
+
+      updateExercise: (id, updates) => {
+        const exercise = get().exercises.find((e) => e.id === id);
+        if (!exercise || !exercise.isCustom) return;
+        set((state) => ({
+          exercises: state.exercises.map((e) =>
+            e.id === id ? { ...e, ...updates } : e
+          ),
+        }));
+      },
+
+      deleteExercise: (id) => {
+        const exercise = get().exercises.find((e) => e.id === id);
+        if (!exercise || !exercise.isCustom) return false;
+        const isUsed = get().routines.some((r) =>
+          r.exercises.some((e) => e.exerciseId === id)
+        );
+        if (isUsed) return false;
+        set((state) => ({
+          exercises: state.exercises.filter((e) => e.id !== id),
+        }));
+        return true;
       },
 
       getExerciseById: (id) => {

@@ -40,6 +40,22 @@ export const defaultExercises: Exercise[] = [
     equipment: 'bodyweight',
     isCustom: false,
   },
+  {
+    id: 'dumbbell-bench-press',
+    name: 'Press con Mancuernas',
+    muscleGroup: 'chest',
+    secondaryMuscles: ['triceps', 'shoulders'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'chest-dips',
+    name: 'Fondos para Pecho',
+    muscleGroup: 'chest',
+    secondaryMuscles: ['triceps', 'shoulders'],
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
 
   // Back
   {
@@ -82,6 +98,22 @@ export const defaultExercises: Exercise[] = [
     equipment: 'cable',
     isCustom: false,
   },
+  {
+    id: 'dumbbell-row',
+    name: 'Remo con Mancuerna',
+    muscleGroup: 'back',
+    secondaryMuscles: ['biceps'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'pullover',
+    name: 'Pullover',
+    muscleGroup: 'back',
+    secondaryMuscles: ['chest'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
 
   // Shoulders
   {
@@ -117,6 +149,14 @@ export const defaultExercises: Exercise[] = [
     id: 'reverse-fly',
     name: 'Pájaros',
     muscleGroup: 'shoulders',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'arnold-press',
+    name: 'Press Arnold',
+    muscleGroup: 'shoulders',
+    secondaryMuscles: ['triceps'],
     equipment: 'dumbbell',
     isCustom: false,
   },
@@ -223,6 +263,22 @@ export const defaultExercises: Exercise[] = [
     equipment: 'machine',
     isCustom: false,
   },
+  {
+    id: 'bulgarian-split-squat',
+    name: 'Sentadilla Búlgara',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes', 'hamstrings'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'sumo-deadlift',
+    name: 'Peso Muerto Sumo',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes', 'hamstrings', 'back'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
 
   // Hamstrings
   {
@@ -272,6 +328,14 @@ export const defaultExercises: Exercise[] = [
     equipment: 'cable',
     isCustom: false,
   },
+  {
+    id: 'sumo-squat',
+    name: 'Sentadilla Sumo',
+    muscleGroup: 'glutes',
+    secondaryMuscles: ['quadriceps'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
 
   // Calves
   {
@@ -319,10 +383,42 @@ export const defaultExercises: Exercise[] = [
     isCustom: false,
   },
   {
+    id: 'ab-wheel',
+    name: 'Rueda Abdominal',
+    muscleGroup: 'abs',
+    equipment: 'other',
+    isCustom: false,
+  },
+  {
     id: 'russian-twist',
     name: 'Giro Ruso',
     muscleGroup: 'obliques',
     equipment: 'bodyweight',
+    isCustom: false,
+  },
+
+  // Forearms
+  {
+    id: 'wrist-curl',
+    name: 'Curl de Muñeca',
+    muscleGroup: 'forearms',
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'reverse-curl',
+    name: 'Curl Inverso',
+    muscleGroup: 'forearms',
+    secondaryMuscles: ['biceps'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'farmers-walk',
+    name: "Farmer's Walk",
+    muscleGroup: 'forearms',
+    secondaryMuscles: ['shoulders'],
+    equipment: 'dumbbell',
     isCustom: false,
   },
 ];

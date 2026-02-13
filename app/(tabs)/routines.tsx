@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Link, router } from 'expo-router';
-import { Plus, ChevronRight, Dumbbell, Trash2 } from 'lucide-react-native';
+import { Plus, ChevronRight, Dumbbell, Trash2, ListChecks } from 'lucide-react-native';
 import { Card, Button } from '@/components/ui';
 import { useRoutineStore } from '@/stores/routineStore';
 import { colors } from '@/constants/Colors';
@@ -23,6 +23,17 @@ export default function RoutinesScreen() {
         >
           <Plus color={colors.bg.primary} size={24} />
         </Pressable>
+      </View>
+
+      <View className="px-4 mb-3">
+        <Button
+          variant="secondary"
+          onPress={() => router.push('/exercises')}
+          icon={<ListChecks color={colors.accent.primary} size={20} />}
+          fullWidth
+        >
+          Gestionar Ejercicios
+        </Button>
       </View>
 
       <ScrollView className="flex-1 px-4">

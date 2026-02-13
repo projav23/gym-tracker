@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { v4 as uuidv4 } from 'uuid';
+import * as Crypto from 'expo-crypto';
 import { User, Goal, WeightEntry } from '@/types';
 import { zustandStorage } from '@/services/storage';
 
@@ -23,7 +23,7 @@ export const useUserStore = create<UserState>()(
       createUser: (name, weight, height, goal, birthDate) => {
         const now = new Date().toISOString();
         const user: User = {
-          id: uuidv4(),
+          id: Crypto.randomUUID(),
           name,
           weight,
           height,

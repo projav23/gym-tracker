@@ -18,6 +18,11 @@ module.exports = {
           secondary: '#FF6B35',
           tertiary: '#6366F1',
         },
+        text: {
+          primary: '#FFFFFF',
+          secondary: '#A0A0A0',
+          muted: '#666666',
+        },
       },
     },
   },
