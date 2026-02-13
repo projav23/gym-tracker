@@ -1,0 +1,354 @@
+import { Exercise } from '@/types';
+
+export const defaultExercises: Exercise[] = [
+  // Chest
+  {
+    id: 'bench-press',
+    name: 'Press de Banca',
+    muscleGroup: 'chest',
+    secondaryMuscles: ['triceps', 'shoulders'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'incline-bench-press',
+    name: 'Press Inclinado',
+    muscleGroup: 'chest',
+    secondaryMuscles: ['triceps', 'shoulders'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'dumbbell-fly',
+    name: 'Aperturas con Mancuernas',
+    muscleGroup: 'chest',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'cable-crossover',
+    name: 'Cruces en Polea',
+    muscleGroup: 'chest',
+    equipment: 'cable',
+    isCustom: false,
+  },
+  {
+    id: 'push-ups',
+    name: 'Flexiones',
+    muscleGroup: 'chest',
+    secondaryMuscles: ['triceps', 'shoulders'],
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+
+  // Back
+  {
+    id: 'deadlift',
+    name: 'Peso Muerto',
+    muscleGroup: 'back',
+    secondaryMuscles: ['hamstrings', 'glutes'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'barbell-row',
+    name: 'Remo con Barra',
+    muscleGroup: 'back',
+    secondaryMuscles: ['biceps'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'lat-pulldown',
+    name: 'Jalón al Pecho',
+    muscleGroup: 'back',
+    secondaryMuscles: ['biceps'],
+    equipment: 'cable',
+    isCustom: false,
+  },
+  {
+    id: 'pull-ups',
+    name: 'Dominadas',
+    muscleGroup: 'back',
+    secondaryMuscles: ['biceps'],
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'seated-row',
+    name: 'Remo Sentado',
+    muscleGroup: 'back',
+    secondaryMuscles: ['biceps'],
+    equipment: 'cable',
+    isCustom: false,
+  },
+
+  // Shoulders
+  {
+    id: 'overhead-press',
+    name: 'Press Militar',
+    muscleGroup: 'shoulders',
+    secondaryMuscles: ['triceps'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'lateral-raise',
+    name: 'Elevaciones Laterales',
+    muscleGroup: 'shoulders',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'front-raise',
+    name: 'Elevaciones Frontales',
+    muscleGroup: 'shoulders',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'face-pull',
+    name: 'Face Pull',
+    muscleGroup: 'shoulders',
+    equipment: 'cable',
+    isCustom: false,
+  },
+  {
+    id: 'reverse-fly',
+    name: 'Pájaros',
+    muscleGroup: 'shoulders',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+
+  // Biceps
+  {
+    id: 'barbell-curl',
+    name: 'Curl con Barra',
+    muscleGroup: 'biceps',
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'dumbbell-curl',
+    name: 'Curl con Mancuernas',
+    muscleGroup: 'biceps',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'hammer-curl',
+    name: 'Curl Martillo',
+    muscleGroup: 'biceps',
+    secondaryMuscles: ['forearms'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'preacher-curl',
+    name: 'Curl en Banco Scott',
+    muscleGroup: 'biceps',
+    equipment: 'barbell',
+    isCustom: false,
+  },
+
+  // Triceps
+  {
+    id: 'tricep-pushdown',
+    name: 'Extensiones en Polea',
+    muscleGroup: 'triceps',
+    equipment: 'cable',
+    isCustom: false,
+  },
+  {
+    id: 'skull-crushers',
+    name: 'Press Francés',
+    muscleGroup: 'triceps',
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'dips',
+    name: 'Fondos',
+    muscleGroup: 'triceps',
+    secondaryMuscles: ['chest', 'shoulders'],
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'overhead-tricep-extension',
+    name: 'Extensión de Tríceps sobre Cabeza',
+    muscleGroup: 'triceps',
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+
+  // Quadriceps
+  {
+    id: 'squat',
+    name: 'Sentadilla',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes', 'hamstrings'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'leg-press',
+    name: 'Prensa de Piernas',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes'],
+    equipment: 'machine',
+    isCustom: false,
+  },
+  {
+    id: 'leg-extension',
+    name: 'Extensión de Cuádriceps',
+    muscleGroup: 'quadriceps',
+    equipment: 'machine',
+    isCustom: false,
+  },
+  {
+    id: 'lunges',
+    name: 'Zancadas',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes', 'hamstrings'],
+    equipment: 'dumbbell',
+    isCustom: false,
+  },
+  {
+    id: 'hack-squat',
+    name: 'Hack Squat',
+    muscleGroup: 'quadriceps',
+    secondaryMuscles: ['glutes'],
+    equipment: 'machine',
+    isCustom: false,
+  },
+
+  // Hamstrings
+  {
+    id: 'romanian-deadlift',
+    name: 'Peso Muerto Rumano',
+    muscleGroup: 'hamstrings',
+    secondaryMuscles: ['glutes', 'back'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'leg-curl',
+    name: 'Curl de Piernas',
+    muscleGroup: 'hamstrings',
+    equipment: 'machine',
+    isCustom: false,
+  },
+  {
+    id: 'good-morning',
+    name: 'Buenos Días',
+    muscleGroup: 'hamstrings',
+    secondaryMuscles: ['back', 'glutes'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+
+  // Glutes
+  {
+    id: 'hip-thrust',
+    name: 'Hip Thrust',
+    muscleGroup: 'glutes',
+    secondaryMuscles: ['hamstrings'],
+    equipment: 'barbell',
+    isCustom: false,
+  },
+  {
+    id: 'glute-bridge',
+    name: 'Puente de Glúteos',
+    muscleGroup: 'glutes',
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'cable-kickback',
+    name: 'Patada en Polea',
+    muscleGroup: 'glutes',
+    equipment: 'cable',
+    isCustom: false,
+  },
+
+  // Calves
+  {
+    id: 'calf-raise',
+    name: 'Elevación de Gemelos',
+    muscleGroup: 'calves',
+    equipment: 'machine',
+    isCustom: false,
+  },
+  {
+    id: 'seated-calf-raise',
+    name: 'Elevación de Gemelos Sentado',
+    muscleGroup: 'calves',
+    equipment: 'machine',
+    isCustom: false,
+  },
+
+  // Abs
+  {
+    id: 'crunch',
+    name: 'Crunch',
+    muscleGroup: 'abs',
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'plank',
+    name: 'Plancha',
+    muscleGroup: 'abs',
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'hanging-leg-raise',
+    name: 'Elevación de Piernas Colgado',
+    muscleGroup: 'abs',
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+  {
+    id: 'cable-crunch',
+    name: 'Crunch en Polea',
+    muscleGroup: 'abs',
+    equipment: 'cable',
+    isCustom: false,
+  },
+  {
+    id: 'russian-twist',
+    name: 'Giro Ruso',
+    muscleGroup: 'obliques',
+    equipment: 'bodyweight',
+    isCustom: false,
+  },
+];
+
+export const muscleGroupLabels: Record<string, string> = {
+  chest: 'Pecho',
+  back: 'Espalda',
+  shoulders: 'Hombros',
+  biceps: 'Bíceps',
+  triceps: 'Tríceps',
+  forearms: 'Antebrazos',
+  quadriceps: 'Cuádriceps',
+  hamstrings: 'Isquiotibiales',
+  glutes: 'Glúteos',
+  calves: 'Gemelos',
+  abs: 'Abdominales',
+  obliques: 'Oblicuos',
+};
+
+export const equipmentLabels: Record<string, string> = {
+  barbell: 'Barra',
+  dumbbell: 'Mancuernas',
+  cable: 'Polea',
+  machine: 'Máquina',
+  bodyweight: 'Peso Corporal',
+  kettlebell: 'Kettlebell',
+  bands: 'Bandas',
+  other: 'Otro',
+};
