@@ -20,7 +20,7 @@ import { suggestWeight } from '@/services/progressionEngine';
 import { colors } from '@/constants/Colors';
 
 export default function RoutineDetailScreen() {
-  const { id } = useLocalSearchParams<{ id: string }>();
+  const { id, mode } = useLocalSearchParams<{ id: string, mode: string }>();
   const { routines, getExerciseById } = useRoutineStore();
   const {
     activeWorkout,
@@ -88,7 +88,7 @@ export default function RoutineDetailScreen() {
 
     if (!set.completed) {
       const routineExercise = routine.exercises[activeWorkout.currentExerciseIndex];
-      setRestTimer(routineExercise?.restSeconds || 90);
+      setRestTimer(routineExercise?.restSeconds || 180);
       setIsResting(true);
     }
   };
@@ -205,16 +205,18 @@ export default function RoutineDetailScreen() {
           <View className="h-32" />
         </ScrollView>
 
-        <View className="absolute bottom-0 left-0 right-0 p-4 bg-bg-primary border-t border-bg-tertiary">
-          <Button
-            onPress={handleStartWorkout}
-            fullWidth
-            size="lg"
-            icon={<Play color={colors.bg.primary} size={24} />}
-          >
-            Comenzar Entrenamiento
-          </Button>
-        </View>
+        {mode !== 'preview' && (
+          <View className="absolute bottom-0 left-0 right-0 p-4 bg-bg-primary border-t border-bg-tertiary">
+            <Button
+              onPress={handleStartWorkout}
+              fullWidth
+              size="lg"
+              icon={<Play color={colors.bg.primary} size={24} />}
+            >
+              Comenzar Entrenamiento
+            </Button>
+          </View>
+        )}
       </SafeAreaView>
     );
   }

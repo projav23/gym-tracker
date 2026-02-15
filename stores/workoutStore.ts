@@ -27,6 +27,7 @@ interface WorkoutState {
   getWorkoutsByExercise: (exerciseId: string) => Workout[];
   getLastWorkoutForExercise: (exerciseId: string) => WorkoutExercise | null;
   getPersonalRecord: (exerciseId: string) => { weight: number; reps: number; date: string } | null;
+  resetWorkout: () => void;
 }
 
 export const useWorkoutStore = create<WorkoutState>()(
@@ -222,6 +223,13 @@ export const useWorkoutStore = create<WorkoutState>()(
 
         return record;
       },
+      resetWorkout: async () => {
+        // 1. limpiar memoria
+        set({ workouts: [], activeWorkout: null });
+
+        // 2. limpiar persistencia
+        await useWorkoutStore.persist.clearStorage();
+      }
     }),
     {
       name: 'workout-storage',

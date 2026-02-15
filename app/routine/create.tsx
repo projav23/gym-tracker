@@ -30,7 +30,7 @@ export default function CreateRoutineScreen() {
   const handleAddExercise = (exercise: Exercise) => {
     setSelectedExercises([
       ...selectedExercises,
-      { exercise, sets: 3, reps: 10, restSeconds: 90 },
+      { exercise, sets: 3, reps: 10, restSeconds: 180 },
     ]);
     setShowExercisePicker(false);
     setSearchQuery('');

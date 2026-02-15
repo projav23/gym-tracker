@@ -6,6 +6,8 @@ import { Card, Button, Input } from '@/components/ui';
 import { useUserStore } from '@/stores/userStore';
 import { colors } from '@/constants/Colors';
 import { Goal } from '@/types';
+import { useWorkoutStore } from '@/stores/workoutStore';
+import { useRoutineStore } from '@/stores/routineStore';
 
 const goalLabels: Record<Goal, string> = {
   strength: 'Fuerza',
@@ -14,7 +16,10 @@ const goalLabels: Record<Goal, string> = {
 };
 
 export default function ProfileScreen() {
-  const { user, createUser, updateUser, addWeightEntry } = useUserStore();
+  const { user, createUser, updateUser, addWeightEntry, resetProfile } = useUserStore();
+  const { resetWorkout } = useWorkoutStore();
+  const { resetRoutines } = useRoutineStore();
+
   const [showWeightInput, setShowWeightInput] = useState(false);
   const [newWeight, setNewWeight] = useState('');
 
@@ -245,7 +250,16 @@ export default function ProfileScreen() {
           </View>
         </View>
 
-        <View className="h-20" />
+        <View className="flex-col items-center justify-center gap-4">
+          <Button 
+          onPress={() => {
+            resetWorkout()
+            resetRoutines()
+          }}
+          variant='danger'>Borrar datos</Button>
+          <Button onPress={() => resetWorkout()} variant='danger'>Borrar workouts</Button>
+          <Button onPress={() => resetRoutines()} variant='danger'>Borrar rutinas</Button>
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

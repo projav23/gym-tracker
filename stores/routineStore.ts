@@ -19,6 +19,7 @@ interface RoutineState {
   updateExercise: (id: string, updates: Partial<Omit<Exercise, 'id' | 'isCustom'>>) => void;
   deleteExercise: (id: string) => boolean;
   getExerciseById: (id: string) => Exercise | undefined;
+  resetRoutines: () => void;
 }
 
 export const useRoutineStore = create<RoutineState>()(
@@ -155,6 +156,13 @@ export const useRoutineStore = create<RoutineState>()(
       getExerciseById: (id) => {
         return get().exercises.find((e) => e.id === id);
       },
+      resetRoutines: async () => {
+        // 1. limpiar memoria
+        set({ routines: [], exercises: defaultExercises, });
+
+        // 2. limpiar persistencia
+        await useRoutineStore.persist.clearStorage();
+      }
     }),
     {
       name: 'routine-storage',

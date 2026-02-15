@@ -14,7 +14,7 @@ export default function RoutinesScreen() {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-bg-primary" edges={['top']}>
+    <SafeAreaView className="flex-1 bg-bg-primary">
       <View className="px-4 py-4 flex-row justify-between items-center">
         <Text className="text-2xl font-bold text-white">Mis Rutinas</Text>
         <Pressable
@@ -56,7 +56,12 @@ export default function RoutinesScreen() {
         ) : (
           <View className="gap-3 pb-20">
             {routines.map((routine) => (
-              <Link key={routine.id} href={`/routine/${routine.id}`} asChild>
+              <Link key={routine.id}
+                href={{
+                  pathname: "/routine/[id]",
+                  params: { id: routine.id, mode: "preview" }
+                }}
+               asChild>
                 <Card className="flex-row items-center">
                   <View className="flex-1">
                     <Text className="text-white font-semibold text-lg">

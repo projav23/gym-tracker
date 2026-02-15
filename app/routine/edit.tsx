@@ -61,7 +61,7 @@ export default function EditRoutineScreen() {
   const handleAddExercise = (exercise: Exercise) => {
     setLocalExercises([
       ...localExercises,
-      { routineExerciseId: null as unknown as string, exercise, sets: 3, reps: 10, restSeconds: 90 },
+      { routineExerciseId: null as unknown as string, exercise, sets: 3, reps: 10, restSeconds: 180 },
     ]);
     setShowExercisePicker(false);
     setSearchQuery('');

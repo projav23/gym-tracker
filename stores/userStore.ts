@@ -12,6 +12,7 @@ interface UserState {
   addWeightEntry: (weight: number) => void;
   deleteWeightEntry: (date: string) => void;
   setOnboarded: (value: boolean) => void;
+  resetProfile: () => void;
 }
 
 export const useUserStore = create<UserState>()(
@@ -69,6 +70,10 @@ export const useUserStore = create<UserState>()(
       },
 
       setOnboarded: (value) => set({ isOnboarded: value }),
+      resetProfile: async() => {
+        set({ user: null, isOnboarded: false})
+        await useUserStore.persist.clearStorage();
+      }
     }),
     {
       name: 'user-storage',
